@@ -17,28 +17,16 @@ export type ModelOption = {
 
 export const MODELS: ModelOption[] = [
   {
-    id: "nex-n2.5-pro:free",
-    name: "Nexus 2.5 Pro",
+    id: "openrouter:free",
+    name: "OpenRouter Free",
     provider: "OpenRouter",
-    note: "Default for fleet chat",
+    note: "Free router with automatic fallback",
   },
   {
-    id: "grok-4.5",
-    name: "Grok 4.5",
-    provider: "xAI",
-    note: "Tools and deep investigation",
-  },
-  {
-    id: "llama-3.3-70b",
-    name: "Llama 3.3 70B",
-    provider: "Groq",
-    note: "Fast routing",
-  },
-  {
-    id: "claude-sonnet-4",
-    name: "Claude Sonnet",
-    provider: "Anthropic",
-    note: "Code review only",
+    id: "ollama:gpt-oss:20b",
+    name: "Ollama Cloud · GPT-OSS 20B",
+    provider: "Ollama Cloud",
+    note: "Hosted open-weight model",
   },
 ];
 

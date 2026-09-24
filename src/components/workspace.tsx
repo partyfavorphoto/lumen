@@ -184,7 +184,9 @@ export function Workspace() {
     }
 
     try {
-      const result = await askLumen({ data: { prompt, history: history.slice(0, -1) } });
+      const result = await askLumen({
+        data: { prompt, history: history.slice(0, -1), modelId: snapshot.modelId },
+      });
       if (liveAbort.current) return;
       if (result.ok && result.text) {
         updateEvent(agentId, { text: result.text, streaming: false });
