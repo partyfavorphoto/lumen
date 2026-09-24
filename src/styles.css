@@ -1,0 +1,187 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-background: #0c0d0b;
+  --color-foreground: #eceae4;
+  --color-card: #141512;
+  --color-card-2: #1b1d18;
+  --color-muted: #22241f;
+  --color-muted-foreground: #9a9890;
+  --color-subtle: #6e6c65;
+  --color-primary: #d5d0c4;
+  --color-primary-foreground: #0c0d0b;
+  --color-border: rgb(236 234 228 / 0.1);
+  --color-border-strong: rgb(236 234 228 / 0.18);
+  --color-ring: #8fad96;
+  --color-live: #8fad96;
+  --color-live-fg: #0c0d0b;
+  --color-warn: #c4a574;
+  --color-danger: #c9847a;
+  --color-danger-foreground: #1a0f0d;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --shadow-border: 0 0 0 1px rgb(236 234 228 / 0.08);
+  --shadow-border-hover: 0 0 0 1px rgb(236 234 228 / 0.14);
+  --shadow-float: 0 18px 40px -24px rgb(0 0 0 / 0.7);
+
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-live) 35%, transparent);
+    color: var(--color-foreground);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .hairline {
+    box-shadow: var(--shadow-border);
+  }
+
+  .surface-float {
+    box-shadow: var(--shadow-border), var(--shadow-float);
+  }
+}
+
+@keyframes lumen-enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-y-base, 8px));
+    filter: blur(var(--motion-blur-sm, 2px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes lumen-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes lumen-pulse-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lumen-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lumen-enter {
+  animation: lumen-enter 400ms var(--ease-smooth-out) both;
+}
+
+.lumen-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(236 234 228 / 0.14) 50%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  animation: lumen-shimmer 1.6s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumen-enter,
+  .lumen-shimmer,
+  .grain::before {
+    animation: none !important;
+  }
+
+  .lumen-shimmer {
+    color: var(--color-muted-foreground);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+}

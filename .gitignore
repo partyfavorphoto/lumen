@@ -1,0 +1,7 @@
+node_modules/
+.vercel/output/
+dist/
+build/
+.cache/
+*.log
+.DS_Store

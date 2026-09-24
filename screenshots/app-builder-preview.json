@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Lumen",
+      "hasCanvas": false,
+      "bodyTextLen": 448,
+      "bodyTextHash": "8f062fe360d3a539466a8a2be9d999e81447e117b1885b2da16c6f8fe4fa08bc",
+      "bodyTextPrefix": "Lumen New investigation SESSIONS Relay inference cascade Investi",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Lumen",
+      "hasCanvas": false,
+      "bodyTextLen": 433,
+      "bodyTextHash": "0c56643e3a3508182b36a86320580d11bb1a8c0a2625708bb3a03d688b25a5ba",
+      "bodyTextPrefix": "Lumen Close New investigation SESSIONS Relay inference cascade I",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
